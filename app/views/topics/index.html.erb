@@ -4,12 +4,16 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th>Votes</th>
   </tr>
 
 <% for topic in @topics %>
   <tr>
     <td><%=h topic.title %></td>
     <td><%=h topic.description %></td>
+    <td><%= button_to "+1", topic_votes_path(topic), :method => :post %></td>
+    <td><%= topic.votes.length.to_s %></td>
+
     <td><%= link_to 'Show', topic %></td>
     <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
     <td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
